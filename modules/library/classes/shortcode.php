@@ -36,7 +36,7 @@ class Shortcode {
 			),
 			sprintf(
 				/* translators: %s: Template ID. */
-				esc_html__( 'Elementor template shortcode for template %s', 'elementor-pro' ),
+				esc_html__( 'Template shortcode for template %s', 'elementor-pro' ),
 				$post_id // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			),
 			sprintf(

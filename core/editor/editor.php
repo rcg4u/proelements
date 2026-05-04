@@ -8,17 +8,22 @@ use ElementorPro\License\Admin as License_Admin;
 use ElementorPro\License\API as License_API;
 use ElementorPro\Plugin;
 use ElementorPro\Modules\DisplayConditions\Module as Display_Conditions_Module;
+use Elementor\Modules\AtomicWidgets\Module as AtomicWidgetsModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
 class Editor extends App {
-	const EDITOR_V4_PACKAGES = [
-		'editor-documents-extended',
-		'editor-controls-extended',
+	const APP_BAR_DEPS_V2 = [
 		'editor-site-navigation-extended',
+		'editor-documents-extended',
+	];
+	const EDITOR_V4_PACKAGES = [
+		'license-api',
+		'editor-controls-extended',
 		'editor-editing-panel-extended',
+		'editor-components-extended',
 	];
 
 	/**
@@ -112,7 +117,13 @@ class Editor extends App {
 				return ELEMENTOR_PRO_ASSETS_PATH . "js/packages/{$name}/{$name}.asset.php";
 			} );
 
-		$packages = apply_filters( 'elementor-pro/editor/v2/packages', self::EDITOR_V4_PACKAGES );
+		$packages_to_load = array_merge( self::APP_BAR_DEPS_V2 );
+
+		if ( Plugin::elementor()->experiments->is_feature_active( AtomicWidgetsModule::EXPERIMENT_NAME ) ) {
+			$packages_to_load = array_merge( $packages_to_load, self::EDITOR_V4_PACKAGES );
+		}
+
+		$packages = apply_filters( 'elementor-pro/editor/v2/packages', $packages_to_load );
 
 		foreach ( $packages as $package ) {
 			$assets_config->load( $package );

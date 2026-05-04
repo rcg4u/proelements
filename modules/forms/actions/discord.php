@@ -169,7 +169,7 @@ class Discord extends Action_Base {
 			'title' => isset( $settings['discord_title'] ) ? $settings['discord_title'] : esc_html__( 'A new Submission', 'elementor-pro' ),
 			'description' => isset( $settings['discord_content'] ) ? $settings['discord_content'] : esc_html__( 'A new Form Submission has been received', 'elementor-pro' ),
 			'author' => [
-				'name'     => isset( $settings['discord_username'] ) ? $settings['discord_username'] : esc_html__( 'Elementor Forms', 'elementor-pro' ),
+				'name'     => isset( $settings['discord_username'] ) ? $settings['discord_username'] : esc_html__( 'Forms', 'elementor-pro' ),
 				'url'      => $page_url,
 				'icon_url' => isset( $settings['discord_avatar_url'] ) ? $settings['discord_avatar_url'] : null,
 			],

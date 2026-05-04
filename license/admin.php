@@ -76,6 +76,17 @@ class Admin {
 	}
 
 
+	public function handle_check_license() {
+		if ( '1' !== Utils::get_super_global_value( $_GET, 'check-license' ) ) {
+			return;
+		}
+
+		API::get_license_data( true );
+
+		wp_safe_redirect( remove_query_arg( 'check-license' ) );
+		exit;
+	}
+
 	public function register_actions() {
 		add_filter( 'http_response',  [ $this, 'http_remove_pro_templates'], 10, 3 );
 

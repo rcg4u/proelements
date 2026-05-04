@@ -16,7 +16,7 @@ class Elementor_Library extends \WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'elementor-library',
-			esc_html__( 'Elementor Library', 'elementor-pro' ),
+			esc_html__( 'Library', 'elementor-pro' ),
 			[
 				'description' => esc_html__( 'Embed your saved elements.', 'elementor-pro' ),
 			]

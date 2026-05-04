@@ -9,6 +9,7 @@ use ElementorPro\Modules\AtomicWidgets\PropTypes\Display_Conditions\Display_Cond
 use ElementorPro\Modules\AtomicWidgets\PropTypes\Display_Conditions\Condition_Group_Prop_Type;
 use ElementorPro\Modules\AtomicWidgets\Transformers\Display_Conditions as Display_Conditions_Transformer;
 use ElementorPro\Modules\AtomicWidgets\Transformers\Condition_Group as Condition_Group_Transformer;
+use ElementorPro\License\API;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -37,6 +38,13 @@ class Module extends Module_Base {
 		add_action(
 			'elementor/atomic-widgets/settings/transformers/register',
 			fn ( $transformers ) => $this->register_settings_transformers( $transformers ),
+		);
+
+		add_filter(
+			'elementor/atomic_widgets/editor_data/element_styles',
+			fn( $styles_without_custom_css, $styles ) => $this->get_license_based_custom_css_value( $styles_without_custom_css, $styles ),
+			10,
+			2
 		);
 	}
 
@@ -68,4 +76,17 @@ class Module extends Module_Base {
 
 		return $transformers;
 	}
+
+	private function get_license_based_custom_css_value( $styles_without_custom_css, $styles ) {
+		if ( $this->has_custom_css_feature_in_license() ) {
+			return $styles;
+		}
+
+		return $styles_without_custom_css;
+	}
+
+	private function has_custom_css_feature_in_license() {
+		return API::is_license_active() && API::is_licence_has_feature( 'atomic-custom-css' );
+	}
 }
+

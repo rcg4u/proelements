@@ -179,7 +179,7 @@ abstract class Single_Base extends Archive_Single_Base {
 			/* translators: %s: Widget name. */
 			'headerMessage' => sprintf( esc_html__( 'The %s widget was not found in your template.', 'elementor-pro' ), $depended_widget_title ),
 			/* translators: 1: Widget name, 2: Template name.  */
-			'message' => sprintf( esc_html__( 'You must include the %1$s widget in your template (%2$s), in order for Elementor to work on this page.', 'elementor-pro' ), $depended_widget_title, '<strong>' . static::get_title() . '</strong>' ),
+			'message' => sprintf( esc_html__( 'You must include the %1$s widget in your template (%2$s)', 'elementor-pro' ), $depended_widget_title, '<strong>' . static::get_title() . '</strong>' ),
 			'strings' => [
 				'confirm' => esc_html__( 'Edit Template', 'elementor-pro' ),
 			],

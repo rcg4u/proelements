@@ -81,10 +81,8 @@ class API {
 			'value' => json_encode( $value ),
 		];
 
-		$updated = update_option( $cache_key, $data, false );
-		if ( false === $updated ) {
-			self::$transient_data[ $cache_key ] = $data;
-		}
+		self::$transient_data[ $cache_key ] = $data;
+		update_option( $cache_key, $data, false );
 	}
 
 	private static function get_transient( $cache_key ) {
@@ -106,7 +104,7 @@ class API {
  	public static function get_license_data( $force_request = false ) {
 		$license_data['success'] = true;
 		$license_data['expires'] = 'lifetime';
-		$license_data['features'] = [  
+		$license_data['features'] = [
 	         'custom-attributes',
 	         'custom_code',
 	         'custom-css',
@@ -172,7 +170,7 @@ class API {
 	public static function is_license_active() {
 		$license_data = self::get_license_data();
 
-		return (bool) $license_data['success'];
+		return (bool) ( $license_data['success'] ?? false );
 	}
 
 	public static function is_license_expired() {

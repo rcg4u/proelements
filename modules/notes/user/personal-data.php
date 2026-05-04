@@ -38,7 +38,7 @@ class Personal_Data {
 	 * @return string
 	 */
 	public function get_title() {
-		return esc_html__( 'Elementor Notes', 'elementor-pro' );
+		return esc_html__( 'Notes', 'elementor-pro' );
 	}
 
 	/**

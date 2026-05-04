@@ -142,7 +142,6 @@ class Module extends Module_Base {
 		return '<div id="elementor-widget-template-empty-templates">
 				<div class="elementor-widget-template-empty-templates-icon"><i class="eicon-nerd" aria-hidden="true"></i></div>
 				<div class="elementor-widget-template-empty-templates-title">' . esc_html__( 'You Haven’t Saved Templates Yet.', 'elementor-pro' ) . '</div>
-				<div class="elementor-widget-template-empty-templates-footer">' . esc_html__( 'Want to learn more about Elementor library?', 'elementor-pro' ) . ' <a class="elementor-widget-template-empty-templates-footer-url" href="https://go.elementor.com/docs-library/" target="_blank">' . esc_html__( 'Click Here', 'elementor-pro' ) . '</a>
 				</div>
 				</div>';
 	}

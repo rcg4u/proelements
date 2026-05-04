@@ -16,7 +16,7 @@ class Personal_Data extends Base_Object {
 	 * @return string
 	 */
 	private function get_title() {
-		return esc_html__( 'Elementor Submissions', 'elementor-pro' );
+		return esc_html__( 'Submissions', 'elementor-pro' );
 	}
 
 	/**
